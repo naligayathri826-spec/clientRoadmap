@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SkyFlowShift.AI — 3-Month Growth Roadmap</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --black: #000000;
+      --near-black: #0a0a0a;
+      --dark: #111111;
+      --dark-mid: #1a1a1a;
+      --mid: #2a2a2a;
+      --grey-dark: #3a3a3a;
+      --grey: #6b6b6b;
+      --grey-light: #9a9a9a;
+      --grey-lighter: #c8c8c8;
+      --silver: #e0e0e0;
+      --off-white: #f5f5f7;
+      --white: #ffffff;
+
+      --font: -apple-system, 'SF Pro Display', 'SF Pro Text', 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    html, body {
+      width: 100%;
+      min-height: 100vh;
+      background: var(--near-black);
+      font-family: var(--font);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* PAGE WRAPPER */
+    .page {
+      width: 900px;
+      margin: 0 auto;
+      padding: 80px 60px 100px;
+    }
+
+    /* TOP NAV BAR */
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 0 40px 0;
+      border-bottom: 1px solid var(--grey-dark);
+      margin-bottom: 60px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-logo img {
+      width: 48px;
+      height: 48px;
+      display: block;
+      object-fit: contain;
+      border-radius: 10px;
+    }
+
+    .brand-name {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .brand-name .name-main {
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .brand-name .name-main span {
+      color: var(--grey-light);
+      font-weight: 300;
+    }
+
+    .brand-name .name-sub {
+      font-size: 10px;
+      font-style: italic;
+      letter-spacing: 0.12em;
+      color: var(--grey);
+      text-transform: uppercase;
+    }
+
+    .topbar-right {
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--grey-dark);
+      font-style: italic;
+    }
+
+    /* HEADER */
+    .header {
+      text-align: center;
+      margin-bottom: 70px;
+      position: relative;
+    }
+
+    .header::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 1px;
+      background: var(--grey);
+      margin: 36px auto 0;
+    }
+
+    .label-tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--grey-light);
+      border: 1px solid var(--grey-dark);
+      padding: 6px 18px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+    }
+
+    .header h1 {
+      font-size: 52px;
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: var(--white);
+    }
+
+    .header h1 em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--grey-lighter);
+    }
+
+    .header .subtitle {
+      margin-top: 16px;
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--grey);
+      font-style: italic;
+      letter-spacing: 0.02em;
+    }
+
+    /* GOAL STRIP */
+    .goal-strip {
+      display: flex;
+      gap: 1px;
+      margin-bottom: 60px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--grey-dark);
+    }
+
+    .goal-item {
+      flex: 1;
+      background: var(--dark-mid);
+      padding: 22px 24px;
+      text-align: center;
+      transition: background 0.3s;
+    }
+
+    .goal-item:hover { background: var(--mid); }
+
+    .goal-item .g-num {
+      font-size: 28px;
+      font-weight: 300;
+      color: var(--white);
+      letter-spacing: -0.02em;
+    }
+
+    .goal-item .g-unit {
+      font-size: 11px;
+      font-style: italic;
+      color: var(--grey);
+      margin-top: 4px;
+      letter-spacing: 0.05em;
+    }
+
+    .goal-item .g-label {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--grey-light);
+      margin-top: 8px;
+    }
+
+    /* MONTH SECTIONS */
+    .months-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .month-card {
+      background: var(--dark);
+      border: 1px solid var(--grey-dark);
+      border-radius: 18px;
+      overflow: hidden;
+      position: relative;
+      transition: border-color 0.3s;
+    }
+
+    .month-card:hover { border-color: var(--grey); }
+
+    .month-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+    }
+    .month-card.m1::before { background: var(--white); }
+    .month-card.m2::before { background: var(--grey-lighter); }
+    .month-card.m3::before { background: var(--grey); }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 30px 36px 24px;
+      border-bottom: 1px solid var(--dark-mid);
+    }
+
+    .card-header .month-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--grey);
+      margin-bottom: 6px;
+    }
+
+    .card-header .month-title {
+      font-size: 26px;
+      font-weight: 300;
+      letter-spacing: -0.01em;
+      color: var(--white);
+    }
+
+    .card-header .month-title em {
+      font-style: italic;
+      color: var(--grey-lighter);
+    }
+
+    .month-badge { text-align: right; }
+
+    .month-badge .kpi-num {
+      font-size: 36px;
+      font-weight: 200;
+      letter-spacing: -0.03em;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .month-badge .kpi-label {
+      font-size: 10px;
+      font-style: italic;
+      color: var(--grey);
+      letter-spacing: 0.1em;
+      margin-top: 4px;
+    }
+
+    /* ITEMS GRID */
+    .items-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1px;
+      background: var(--dark-mid);
+      padding: 1px;
+    }
+
+    .item-cell {
+      background: var(--dark);
+      padding: 22px 28px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      transition: background 0.25s;
+    }
+
+    .item-cell:hover { background: #161616; }
+
+    .item-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--dark-mid);
+      border: 1px solid var(--grey-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 14px;
+    }
+
+    .item-text { flex: 1; }
+
+    .item-name {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--off-white);
+      letter-spacing: -0.01em;
+      margin-bottom: 3px;
+    }
+
+    .item-desc {
+      font-size: 11px;
+      font-style: italic;
+      color: var(--grey);
+      line-height: 1.5;
+    }
+
+    /* HIGHLIGHT ROW */
+    .highlight-row {
+      background: var(--dark-mid);
+      padding: 20px 36px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-top: 1px solid var(--grey-dark);
+    }
+
+    .highlight-row .hl-icon { font-size: 16px; }
+
+    .highlight-row .hl-text {
+      font-size: 12px;
+      font-style: italic;
+      color: var(--grey-light);
+      letter-spacing: 0.02em;
+    }
+
+    .highlight-row .hl-text strong {
+      color: var(--white);
+      font-style: normal;
+      font-weight: 400;
+    }
+
+    /* TIMELINE BAR */
+    .timeline {
+      margin-top: 60px;
+      padding: 40px;
+      background: var(--dark);
+      border: 1px solid var(--grey-dark);
+      border-radius: 18px;
+    }
+
+    .timeline-title {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--grey);
+      margin-bottom: 28px;
+    }
+
+    .timeline-track {
+      position: relative;
+      height: 4px;
+      background: var(--mid);
+      border-radius: 100px;
+      margin-bottom: 16px;
+    }
+
+    .timeline-fill {
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      border-radius: 100px;
+      background: linear-gradient(90deg, var(--white) 0%, var(--grey-lighter) 40%, var(--grey) 100%);
+      width: 100%;
+    }
+
+    .timeline-dots {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .t-dot {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .t-dot-circle {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 2px solid var(--grey);
+      background: var(--dark);
+      margin-top: -23px;
+    }
+
+    .t-dot.active .t-dot-circle {
+      border-color: var(--white);
+      background: var(--white);
+    }
+
+    .t-dot-label {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--grey);
+    }
+
+    .t-dot.active .t-dot-label { color: var(--white); }
+
+    /* DELIVERABLES TABLE */
+    .deliverables { margin-top: 30px; }
+
+    .del-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--dark-mid);
+    }
+
+    .del-row:last-child { border-bottom: none; }
+
+    .del-name {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--grey-lighter);
+      letter-spacing: 0.01em;
+    }
+
+    .del-months {
+      display: flex;
+      gap: 8px;
+    }
+
+    .del-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--mid);
+    }
+
+    .del-dot.on  { background: var(--white); }
+    .del-dot.on2 { background: var(--grey-lighter); }
+    .del-dot.on3 { background: var(--grey); }
+
+    /* FOOTER */
+    .footer {
+      margin-top: 80px;
+      text-align: center;
+      padding-top: 40px;
+      border-top: 1px solid var(--dark-mid);
+    }
+
+    .footer .footer-brand {
+      font-size: 13px;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--grey);
+      letter-spacing: 0.08em;
+    }
+
+    .footer .footer-date {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--grey-dark);
+      margin-top: 8px;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .page > * { animation: fadeUp 0.6s ease both; }
+    .page > *:nth-child(1) { animation-delay: 0.05s; }
+    .page > *:nth-child(2) { animation-delay: 0.15s; }
+    .page > *:nth-child(3) { animation-delay: 0.2s;  }
+    .page > *:nth-child(4) { animation-delay: 0.25s; }
+    .page > *:nth-child(5) { animation-delay: 0.3s;  }
+
+    @media (max-width: 960px) {
+      .page { width: 100%; padding: 40px 24px 80px; }
+      .header h1 { font-size: 36px; }
+      .items-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .items-grid { grid-template-columns: 1fr; }
+      .card-header { flex-direction: column; gap: 14px; align-items: flex-start; }
+      .month-badge { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- TOP NAV BAR -->
+  <div class="topbar">
+    <div class="brand">
+      <div class="brand-logo">
+        <img src="skyflowshiftlogo.jpeg" alt="SkyFlowShift.AI Logo" />
+      </div>
+      <div class="brand-name">
+        <div class="name-main">SkyFlowShift<span>.AI</span></div>
+        <div class="name-sub">Digital Growth Agency</div>
+      </div>
+    </div>
+    <div class="topbar-right">Confidential · 2026</div>
+  </div>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="label-tag">3 — Month Growth Strategy</div>
+    <h1>Digital Growth <em>Roadmap</em></h1>
+    <p class="subtitle">A strategic blueprint for sustainable brand growth &amp; lead generation</p>
+  </div>
+
+  <!-- KPI GOAL STRIP -->
+  <div class="goal-strip">
+    <div class="goal-item">
+      <div class="g-num">5K</div>
+      <div class="g-unit">organic reach</div>
+      <div class="g-label">Month One Target</div>
+    </div>
+    <div class="goal-item">
+      <div class="g-num">10K</div>
+      <div class="g-unit">views</div>
+      <div class="g-label">Month Two Target</div>
+    </div>
+    <div class="goal-item">
+      <div class="g-num">30K+</div>
+      <div class="g-unit">views</div>
+      <div class="g-label">Month Three Target</div>
+    </div>
+    <div class="goal-item">
+      <div class="g-num">∞</div>
+      <div class="g-unit">pipeline</div>
+      <div class="g-label">Lead Generation</div>
+    </div>
+  </div>
+
+  <!-- MONTHS -->
+  <div class="months-grid">
+
+    <!-- MONTH 1 -->
+    <div class="month-card m1">
+      <div class="card-header">
+        <div>
+          <div class="month-label">Phase One · Days 1 – 30</div>
+          <div class="month-title">Foundation &amp; <em>Page Optimisation</em></div>
+        </div>
+        <div class="month-badge">
+          <div class="kpi-num">5K</div>
+          <div class="kpi-label">organic views target</div>
+        </div>
+      </div>
+      <div class="items-grid">
+        <div class="item-cell">
+          <div class="item-icon">🔍</div>
+          <div class="item-text">
+            <div class="item-name">SEO Optimisation</div>
+            <div class="item-desc">Keywords, metadata &amp; discoverability audit</div>
+          </div>
+        </div>
+        <div class="item-cell">
+          <div class="item-icon">◈</div>
+          <div class="item-text">
+            <div class="item-name">Branding</div>
+            <div class="item-desc">Visual identity alignment &amp; brand voice</div>
+          </div>
+        </div>
+        <div class="item-cell">
+          <div class="item-icon">✦</div>
+          <div class="item-text">
+            <div class="item-name">Content Strategy</div>
+            <div class="item-desc">Pillar content creation &amp; calendar setup</div>
+          </div>
+        </div>
+        <div class="item-cell">
+          <div class="item-icon">✎</div>
+          <div class="item-text">
+            <div class="item-name">Scripting</div>
+            <div class="item-desc">Hook-driven scripts for maximum retention</div>
+          </div>
+        </div>
+        <div class="item-cell">
+          <div class="item-icon">▣</div>
+          <div class="item-text">
+            <div class="item-name">Thumbnails</div>
+            <div class="item-desc">High-CTR visual design system</div>
+          </div>
+        </div>
+        <div class="item-cell">
+          <div class="item-icon">◎</div>
+          <div class="item-text">
+            <div class="item-name">Lead Generation</div>
+            <div class="item-desc">Funnel setup &amp; CTA integration</div>
+          </div>
+        </div>
+      </div>
+      <div class="highlight-row">
+        <span class="hl-icon">⚡</span>
+        <span class="hl-text"><strong>Milestone:</strong> After 5 reels, organic reach begins to compound — targeting <strong>5K+ views</strong> with zero paid spend</span>
+      </div>
+    </div>
+
+    <!-- MONTH 2 -->
+    <div class="month-card m2">
+      <div class="card-header">
+        <div>
+          <div class="month-label">Phase Two · Days 31 – 60</div>
+          <div class="month-title">Scale &amp; <em>Momentum</em></div>
+        </div>
+        <div class="month-badge">
+          <div class="kpi-num">10K</div>
+          <div class="kpi-label">views target</div>
+        </div>
+      </div>
+      <div class="items-grid">
+        <div class="item-cell">
+          <div class="item-icon">◈</div>
+          <div class="item-text">
+            <div class="item-name">Branding</div>
+            <div class="item-desc">Refine &amp; strengthen brand consistency</div>
+          </div>
+        </div>
+        <div class="item-cell">
+          <div class="item-icon">✎</div>
+          <div class="item-text">
+            <div class="item-name">Scripting</div>
+            <div class="item-desc">Elevated storytelling &amp; engagement loops</div>
+          </div>
+        </div>
+        <div class="item-cell">
+          <div class="item-icon">✦</div>
+          <div class="item-text">
+            <div class="item-name">Content</div>
+            <div class="item-desc">Volume increase, quality maintained</div>
+          </div>
+        </div>
+        <div class="item-cell">
+          <div class="item-icon">▣</div>
+          <div class="item-text">
+            <div class="item-name">Thumbnails</div>
+            <div class="item-desc">A/B testing for peak click-through rates</div>
+          </div>
+        </div>
+        <div class="item-cell">
+          <div class="item-icon">◉</div>
+          <div class="item-text">
+            <div class="item-name">Views Growth</div>
+            <div class="item-desc">Algorithm alignment &amp; watch-time optimisation</div>
+          </div>
+        </div>
+        <div class="item-cell">
+          <div class="item-icon">◎</div>
+          <div class="item-text">
+            <div class="item-name">Lead Generation</div>
+            <div class="item-desc">Nurture sequences &amp; conversion focus</div>
+          </div>
+        </div>
+      </div>
+      <div class="highlight-row">
+        <span class="hl-icon">📈</span>
+        <span class="hl-text"><strong>Milestone:</strong> Consistent audience growth with <strong>10K+ views per reel</strong> — brand authority established</span>
+      </div>
+    </div>
+
+    <!-- MONTH 3 -->
+    <div class="month-card m3">
+      <div class="card-header">
+        <div>
+          <div class="month-label">Phase Three · Days 61 – 90</div>
+          <div class="month-title">Authority &amp; <em>Amplification</em></div>
+        </div>
+        <div class="month-badge">
+          <div class="kpi-num">30K+</div>
+          <div class="kpi-label">views target</div>
+        </div>
+      </div>
+      <div class="items-grid">
+        <div class="item-cell">
+          <div class="item-icon">🤝</div>
+          <div class="item-text">
+            <div class="item-name">Collaborations</div>
+            <div class="item-desc">Strategic creator &amp; brand partnerships</div>
+          </div>
+        </div>
+        <div class="item-cell">
+          <div class="item-icon">📣</div>
+          <div class="item-text">
+            <div class="item-name">Promotions</div>
+            <div class="item-desc">Amplified reach through targeted campaigns</div>
+          </div>
+        </div>
+        <div class="item-cell">
+          <div class="item-icon">◈</div>
+          <div class="item-text">
+            <div class="item-name">Branding</div>
+            <div class="item-desc">Premium brand positioning &amp; authority</div>
+          </div>
+        </div>
+        <div class="item-cell">
+          <div class="item-icon">✎</div>
+          <div class="item-text">
+            <div class="item-name">Scripting</div>
+            <div class="item-desc">Viral-optimised, share-worthy narratives</div>
+          </div>
+        </div>
+        <div class="item-cell">
+          <div class="item-icon">✦</div>
+          <div class="item-text">
+            <div class="item-name">Content</div>
+            <div class="item-desc">Hero content &amp; evergreen asset production</div>
+          </div>
+        </div>
+        <div class="item-cell">
+          <div class="item-icon">▣</div>
+          <div class="item-text">
+            <div class="item-name">Thumbnails</div>
+            <div class="item-desc">Signature style — instantly recognisable</div>
+          </div>
+        </div>
+        <div class="item-cell">
+          <div class="item-icon">◉</div>
+          <div class="item-text">
+            <div class="item-name">Views (30K+)</div>
+            <div class="item-desc">Viral momentum with compounding reach</div>
+          </div>
+        </div>
+        <div class="item-cell">
+          <div class="item-icon">◎</div>
+          <div class="item-text">
+            <div class="item-name">Lead Generation</div>
+            <div class="item-desc">Full funnel — from awareness to close</div>
+          </div>
+        </div>
+      </div>
+      <div class="highlight-row">
+        <span class="hl-icon">🚀</span>
+        <span class="hl-text"><strong>Milestone:</strong> Brand becomes a niche authority — <strong>30K+ views</strong>, qualified lead pipeline fully operational</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- TIMELINE BAR -->
+  <div class="timeline">
+    <div class="timeline-title">90-Day Progress Timeline</div>
+    <div class="timeline-track">
+      <div class="timeline-fill"></div>
+    </div>
+    <div class="timeline-dots">
+      <div class="t-dot active">
+        <div class="t-dot-circle"></div>
+        <div class="t-dot-label">Day 1</div>
+      </div>
+      <div class="t-dot active">
+        <div class="t-dot-circle"></div>
+        <div class="t-dot-label">Day 30</div>
+      </div>
+      <div class="t-dot active">
+        <div class="t-dot-circle"></div>
+        <div class="t-dot-label">Day 60</div>
+      </div>
+      <div class="t-dot active">
+        <div class="t-dot-circle"></div>
+        <div class="t-dot-label">Day 90</div>
+      </div>
+    </div>
+
+    <!-- DELIVERABLES MATRIX -->
+    <div class="deliverables">
+      <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--grey);margin-bottom:18px;margin-top:30px;">
+        Deliverables Matrix
+        <span style="float:right;display:flex;gap:20px;font-style:italic;text-transform:none;letter-spacing:0">
+          <span style="color:var(--white)">● M1</span>
+          <span style="color:var(--grey-lighter)">● M2</span>
+          <span style="color:var(--grey)">● M3</span>
+        </span>
+      </div>
+      <div class="del-row">
+        <span class="del-name">SEO Optimisation</span>
+        <div class="del-months">
+          <div class="del-dot on"></div>
+          <div class="del-dot"></div>
+          <div class="del-dot"></div>
+        </div>
+      </div>
+      <div class="del-row">
+        <span class="del-name">Branding</span>
+        <div class="del-months">
+          <div class="del-dot on"></div>
+          <div class="del-dot on2"></div>
+          <div class="del-dot on3"></div>
+        </div>
+      </div>
+      <div class="del-row">
+        <span class="del-name">Content Production</span>
+        <div class="del-months">
+          <div class="del-dot on"></div>
+          <div class="del-dot on2"></div>
+          <div class="del-dot on3"></div>
+        </div>
+      </div>
+      <div class="del-row">
+        <span class="del-name">Scripting</span>
+        <div class="del-months">
+          <div class="del-dot on"></div>
+          <div class="del-dot on2"></div>
+          <div class="del-dot on3"></div>
+        </div>
+      </div>
+      <div class="del-row">
+        <span class="del-name">Thumbnails</span>
+        <div class="del-months">
+          <div class="del-dot on"></div>
+          <div class="del-dot on2"></div>
+          <div class="del-dot on3"></div>
+        </div>
+      </div>
+      <div class="del-row">
+        <span class="del-name">Lead Generation</span>
+        <div class="del-months">
+          <div class="del-dot on"></div>
+          <div class="del-dot on2"></div>
+          <div class="del-dot on3"></div>
+        </div>
+      </div>
+      <div class="del-row">
+        <span class="del-name">Collaborations</span>
+        <div class="del-months">
+          <div class="del-dot"></div>
+          <div class="del-dot"></div>
+          <div class="del-dot on3"></div>
+        </div>
+      </div>
+      <div class="del-row">
+        <span class="del-name">Promotions</span>
+        <div class="del-months">
+          <div class="del-dot"></div>
+          <div class="del-dot"></div>
+          <div class="del-dot on3"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:16px;">
+      <img src="skyflowshiftlogo.jpeg" alt="SkyFlowShift.AI" style="width:28px;height:28px;object-fit:contain;opacity:0.5;border-radius:6px;" />
+      <span style="font-size:14px;font-weight:400;letter-spacing:-0.01em;color:var(--grey);font-style:italic;">SkyFlowShift.AI</span>
+    </div>
+    <div class="footer-brand">Crafted with precision — your growth, by design</div>
+    <div class="footer-date">3-Month Engagement · June 2026 — August 2026</div>
+  </div>
+
+</div>
+</body>
+</html>

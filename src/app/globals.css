@@ -1,0 +1,182 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+@theme {
+  --font-sans: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+:root {
+  /* Light Mode - Crisp, clean, Apple-white aesthetic */
+  --background: 210 20% 98%;
+  --foreground: 224 71.4% 4.1%;
+  
+  --card: 0 0% 100%;
+  --card-foreground: 224 71.4% 4.1%;
+  
+  --popover: 0 0% 100%;
+  --popover-foreground: 224 71.4% 4.1%;
+  
+  --primary: 220 100% 50%; /* Apple Blue */
+  --primary-foreground: 210 20% 98%;
+  
+  --secondary: 220 14.3% 95.9%;
+  --secondary-foreground: 220.9 39.3% 11%;
+  
+  --muted: 220 14.3% 95.9%;
+  --muted-foreground: 220 8.9% 46.1%;
+  
+  --accent: 220 14.3% 90.9%;
+  --accent-foreground: 220.9 39.3% 11%;
+  
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 20% 98%;
+
+  --success: 142.1 76.2% 36.3%;
+  --success-foreground: 355.7 100% 97.3%;
+  
+  --border: 220 13% 91%;
+  --input: 220 13% 91%;
+  --ring: 224 71.4% 4.1%;
+  
+  --radius: 18px;
+  
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --glass-blur: 16px;
+  --shadow-premium: 0 8px 32px 0 rgba(0, 0, 0, 0.04);
+}
+
+.dark {
+  /* Dark Mode - Apple Vision Pro inspired glassmorphic aesthetic */
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  
+  --card: 240 10% 7%;
+  --card-foreground: 0 0% 98%;
+  
+  --popover: 240 10% 7%;
+  --popover-foreground: 0 0% 98%;
+  
+  --primary: 214.3 91.8% 56.8%; /* Vivid iOS/macOS Blue */
+  --primary-foreground: 210 20% 98%;
+  
+  --secondary: 240 3.7% 15.9%;
+  --secondary-foreground: 0 0% 98%;
+  
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  
+  --accent: 240 3.7% 20%;
+  --accent-foreground: 0 0% 98%;
+  
+  --destructive: 0 62.8% 50.6%;
+  --destructive-foreground: 0 0% 98%;
+
+  --success: 142.1 70.6% 45.3%;
+  --success-foreground: 144 60% 96%;
+  
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --ring: 240 4.9% 83.9%;
+  
+  --glass-bg: rgba(25, 25, 28, 0.65);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-blur: 24px;
+  --shadow-premium: 0 12px 40px 0 rgba(0, 0, 0, 0.35);
+}
+
+* {
+  border-color: hsl(var(--border));
+  box-sizing: border-box;
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Premium Glassmorphism classes */
+.apple-glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-premium);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.apple-glass-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 48px 0 rgba(0, 0, 0, 0.08);
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+.dark .apple-glass-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 56px 0 rgba(0, 0, 0, 0.45);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Smooth custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(120, 120, 120, 0.2);
+  border-radius: 9999px;
+  transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(120, 120, 120, 0.4);
+}
+
+/* Custom transitions and utility animations */
+.fade-in-up {
+  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.glow-blue {
+  box-shadow: 0 0 20px 2px rgba(59, 130, 246, 0.15);
+}
+
+.dark .glow-blue {
+  box-shadow: 0 0 30px 4px rgba(59, 130, 246, 0.25);
+}
+
+/* Hide scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Italic Statistics highlight accents */
+.stat-highlight {
+  font-style: italic;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
